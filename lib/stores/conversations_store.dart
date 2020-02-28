@@ -123,8 +123,9 @@ abstract class _ConversationsStore with Store {
 
   @action
   void sendMessage(Message message) {
-    selectedConversation.messages.add(message);
-    selectedConversation = selectedConversation.copy(messages: List.from(selectedConversation.messages));
+    selectedConversation.messages.insert(0, message);
+    selectedConversation = selectedConversation.copy(
+        messages: List.from(selectedConversation.messages));
   }
 
   void dispose() {
@@ -132,6 +133,8 @@ abstract class _ConversationsStore with Store {
   }
 
   Conversation _findConversationById(int conversationId) {
-    return conversations.firstWhere((conversation) => conversation.id == conversationId, orElse: () => null);
+    return conversations.firstWhere(
+        (conversation) => conversation.id == conversationId,
+        orElse: () => null);
   }
 }

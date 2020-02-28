@@ -21,14 +21,14 @@ class _MessagesScreenState extends State<MessagesScreen> {
   void initState() {
     super.initState();
 
-    _onNewMessageAdded = autorun((_) {
-      print(conversationsStore.selectedConversation.messages.toString());
-      _chatScrollController.animateTo(
-        _chatScrollController.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 800),
-        curve: Curves.easeInOutCirc,
-      );
-    }, delay: 300);
+    // _onNewMessageAdded = autorun((_) {
+    //   print(conversationsStore.selectedConversation.messages.toString());
+    //   _chatScrollController.animateTo(
+    //     _chatScrollController.position.maxScrollExtent,
+    //     duration: const Duration(milliseconds: 800),
+    //     curve: Curves.easeInOutCirc,
+    //   );
+    // }, delay: 300);
   }
 
   @override
@@ -66,13 +66,15 @@ class _MessagesScreenState extends State<MessagesScreen> {
   }) {
     return Observer(builder: (_) {
       return ListView.builder(
+        reverse: true,
         controller: _chatScrollController,
         padding: EdgeInsets.only(
           bottom: typingFieldHeight + 8 ?? 0,
           top: 4,
         ),
         itemBuilder: (context, index) {
-          final Message message = conversationsStore.selectedConversation.messages[index];
+          final Message message =
+              conversationsStore.selectedConversation.messages[index];
 
           return Padding(
             padding: EdgeInsets.only(top: 10, bottom: 10),
@@ -116,7 +118,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
                   textInputAction: TextInputAction.done,
                   style: TextStyle(color: ColorPrimary.c900),
                   decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 12),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(36),
                       borderSide: BorderSide(
@@ -171,10 +174,9 @@ class _MessagesScreenState extends State<MessagesScreen> {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: ColorPrimary.c900,
-          boxShadow: defaultShadow
-        ),
+            shape: BoxShape.circle,
+            color: ColorPrimary.c900,
+            boxShadow: defaultShadow),
         child: Icon(
           Icons.arrow_upward,
           color: ColorPrimary.c100,
