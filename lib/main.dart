@@ -94,7 +94,7 @@ class MyApp extends StatelessWidget {
       },
       theme: ThemeData(
         canvasColor: canvasColor,
-        primaryColor: ColorPrimary.c500,
+        primaryColor: ColorPrimary.c900,
         accentColor: accentColor,
       ),
       home: WillPopScope(
@@ -126,5 +126,10 @@ class ColorPrimary {
 
 const List<BoxShadow> defaultShadow = [
   BoxShadow(color: ColorPrimary.c500, offset: Offset(2, 2), blurRadius: 4),
+  BoxShadow(color: Colors.white, offset: Offset(-2, -2), blurRadius: 4)
+];
+
+const List<BoxShadow> defaultShadowDark = [
+  BoxShadow(color: ColorPrimary.c800, offset: Offset(2, 2), blurRadius: 4),
   BoxShadow(color: Colors.white, offset: Offset(-2, -2), blurRadius: 4)
 ];

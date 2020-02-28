@@ -41,14 +41,14 @@ class MessageBox extends StatelessWidget {
       margin: const EdgeInsets.only(left: 16, right: 64),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: ColorPrimary.c900,
+        color: ColorPrimary.c700,
         borderRadius: BorderRadius.all(Radius.circular(16)),
-        boxShadow: defaultShadow,
+        boxShadow: defaultShadowDark,
       ),
       child: Text(
         message.message,
         style: TextStyle(
-          color: ColorPrimary.c200,
+          color: ColorPrimary.c100,
           fontSize: 16,
           fontWeight: FontWeight.w300,
         ),
